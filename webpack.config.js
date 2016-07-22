@@ -5,9 +5,9 @@ var path = require('path');
 // Webpack Config
 var webpackConfig = {
   entry: {
-    'polyfills': './src/polyfills.browser.ts',
-    'vendor':    './src/vendor.browser.ts',
-    'main':       './src/main.browser.ts',
+    'polyfills': './src/client/polyfills.browser.ts',
+    'vendor':    './src/client/vendor.browser.ts',
+    'main':      './src/client/main.browser.ts',
   },
 
   output: {
@@ -33,9 +33,11 @@ var webpackConfig = {
 
 // Our Webpack Defaults
 var defaultConfig = {
+
   devtool: 'cheap-module-source-map',
   cache: true,
   debug: true,
+
   output: {
     filename: '[name].bundle.js',
     sourceMapFilename: '[name].map',
@@ -43,7 +45,7 @@ var defaultConfig = {
   },
 
   resolve: {
-    root: [ path.join(__dirname, 'src') ],
+    root: [ path.join(__dirname, 'src/client') ],
     extensions: ['', '.ts', '.js']
   },
 
