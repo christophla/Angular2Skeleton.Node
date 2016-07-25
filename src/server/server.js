@@ -7,7 +7,7 @@ console.log('* Skeleon Application                                   *');
 console.log('*********************************************************');
 
 // exception handling
-process.on('uncaughtException', function(err) {
+process.on('uncaughtException', function (err) {
     console.error('uncaughtException:', err.message);
     console.error(err.stack);
     process.exit(1);
@@ -30,6 +30,7 @@ const server = new Hapi.Server({
     },
     connections: {
         routes: {
+            cors: options.main.cors,
             files: {
                 relativeTo: Path.join(__dirname, options.main.public)
             }
@@ -66,9 +67,13 @@ server.register(plugins, { routes: { prefix: '/api' } }, function (err) {
         }
     });
 
+    // Add the server routes
+    server.route(require('./routes'));
+
     server.start(function (err) {
         endIfErr(err);
         console.log('* listening at: ' + server.info.port);
     });
 
 });
+

@@ -1,5 +1,6 @@
 module.exports = {
     main: {
+        cors: true,
         host: '0.0.0.0',
         labels: {
             api: 'api'
