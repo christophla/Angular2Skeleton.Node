@@ -1,5 +1,10 @@
 const Path = require('path');
 const Hapi = require('hapi');
+const webpack = require('webpack');
+const webpackConfig = require('../../webpack.config.js');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const webpackMiddleware = require('webpack-dev-middleware');
+const isDeveloping = process.env.NODE_ENV !== 'production';
 
 console.log(' ');
 console.log('*********************************************************');
@@ -22,6 +27,12 @@ function endIfErr(err) {
 
 // config
 var options = require('./options.js');
+
+// webpack config
+webpackConfig.devtool = 'source-map';
+
+//create the webpack compiler
+compiler = webpack(webpackConfig);
 
 // hapi webserver
 const server = new Hapi.Server({
@@ -50,6 +61,23 @@ var plugins = [
     { register: require('bell') },
     { register: require('inert') }
 ];
+
+// webpack development plugin
+if (isDeveloping) {
+    plugins.push({
+        register: require('hapi-webpack-dev-plugin'),
+        options: {
+            compiler: compiler,
+            quiet: true,
+            devIndex: ".",
+            watchDelay: 200,
+            noInfo: false,
+            stats: {
+                colors: true
+            }
+        }
+    })
+}
 
 server.register(plugins, { routes: { prefix: '/api' } }, function (err) {
     endIfErr(err);

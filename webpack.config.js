@@ -30,7 +30,7 @@ var webpackConfig = {
             port: 3000,
             proxy: 'http://localhost:3100/'
         }, {
-            reload: true
+            reload: false
         })
     ],
 
@@ -80,11 +80,11 @@ var defaultConfig = {
     },
 
     node: {
-        global: 1,
-        crypto: 'empty',
-        module: 0,
         Buffer: 0,
         clearImmediate: 0,
+        crypto: 'empty',
+        global: 1,
+        module: 0,
         setImmediate: 0
     }
 };

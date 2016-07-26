@@ -2,6 +2,7 @@
   "name": "angular2-skeleton-node",
   "version": "1.0.0",
   "description": "A simple starter Angular2 / Node / Hapi project",
+  "main": "src/server/server.js",
   "scripts": {
     "build": "webpack --inline --colors --progress --display-error-details --display-cached",
     "postinstall": "npm run typings-install",
@@ -28,6 +29,7 @@
     "gulp-uglify": "^1.5.4",
     "gulp-util": "^3.0.7",
     "gulp-webpack": "^1.5.0",
+    "hapi-webpack-dev-plugin": "^0.1.2",
     "raw-loader": "^0.5.1",
     "to-string-loader": "^1.1.4",
     "typescript": "~1.8.9",
