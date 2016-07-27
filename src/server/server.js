@@ -1,14 +1,15 @@
 const Path = require('path');
 const Hapi = require('hapi');
 const webpack = require('webpack');
-const webpackConfig = require('../../webpack.config.js');
+const webpackConfig = require('../config/webpack.config.js');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackMiddleware = require('webpack-dev-middleware');
 const isDeveloping = process.env.NODE_ENV !== 'production';
+const chokidar = require('chokidar');
 
 console.log(' ');
 console.log('*********************************************************');
-console.log('* Skeleon Application                                   *');
+console.log('* Skeleton Application                                   *');
 console.log('*********************************************************');
 
 // exception handling
@@ -28,11 +29,25 @@ function endIfErr(err) {
 // config
 var options = require('./options.js');
 
+// Do "hot-reloading" of express stuff on the server
+// Throw away cached modules and re-require next time
+// Ensure there's no important state in there!
+// const watcher = chokidar.watch('./src/server');
+
+// watcher.on('ready', function() {
+//   watcher.on('all', function() {
+//     console.log("Clearing /server/ module cache from server");
+//     Object.keys(require.cache).forEach(function(id) {
+//       if (/[\/\\]server[\/\\]/.test(id)) {
+//           delete require.cache[id];
+//         }
+//     });
+//   });
+// });
+
 // webpack config
 webpackConfig.devtool = 'source-map';
 
-//create the webpack compiler
-compiler = webpack(webpackConfig);
 
 // hapi webserver
 const server = new Hapi.Server({
@@ -64,19 +79,21 @@ var plugins = [
 
 // webpack development plugin
 if (isDeveloping) {
-    plugins.push({
-        register: require('hapi-webpack-dev-plugin'),
-        options: {
-            compiler: compiler,
-            quiet: true,
-            devIndex: ".",
-            watchDelay: 200,
-            noInfo: false,
-            stats: {
-                colors: true
-            }
-        }
-    })
+    //create the webpack compiler
+    // var compiler = webpack(webpackConfig);
+    // plugins.push({
+    //     register: require('hapi-webpack-dev-plugin'),
+    //     options: {
+    //         compiler: compiler,
+    //         quiet: false,
+    //         devIndex: ".",
+    //         watchDelay: 200,
+    //         noInfo: false,
+    //         stats: {
+    //             colors: true
+    //         }
+    //     }
+    // });
 }
 
 server.register(plugins, { routes: { prefix: '/api' } }, function (err) {

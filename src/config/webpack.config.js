@@ -24,14 +24,14 @@ var webpackConfig = {
         new webpack.NoErrorsPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development')
-        }),
-        new BrowserSyncPlugin({
-            host: 'localhost',
-            port: 3000,
-            proxy: 'http://localhost:3100/'
-        }, {
-            reload: false
         })
+        // new BrowserSyncPlugin({
+        //     host: 'localhost',
+        //     port: 3000,
+        //     proxy: 'http://localhost:3100/'
+        // }, {
+        //     reload: false
+        // })
     ],
 
     module: {
