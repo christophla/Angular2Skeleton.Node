@@ -98,6 +98,7 @@ server.register(plugins, function (err) {
         }
     );
 
+
     // catch-all
     server.route({
         method: 'GET',
@@ -106,6 +107,7 @@ server.register(plugins, function (err) {
             reply('Hapi catch-all view for /' + encodeURIComponent(request.params.path));
         }
     });
+
 
     // app
     server.route({
@@ -116,8 +118,6 @@ server.register(plugins, function (err) {
         }
     });
 
-    // add the server routes
-    server.route(require('./routes'));
 
     // DEV SETUP
     if (process.env.NODE_ENV === 'development') {
@@ -141,6 +141,11 @@ server.register(plugins, function (err) {
         // to request them directly from a webpack dev server URL in webpack-config.js
 
     }
+
+    
+    // add the server routes
+    server.route(require('./routes'));
+
 
     server.start(function (err) {
         endIfErr(err);

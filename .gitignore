@@ -36,8 +36,11 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
-# distribution directory
-dist
-
+# Generated files:
 nodemon.json
 webpack-assets.json
+
+# Visual Studio Code
+.vscode
+
+# Note: Webpack output directory is ignored using a gitignore file located in it.

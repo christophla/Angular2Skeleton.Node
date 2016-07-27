@@ -1,24 +1,26 @@
 {
   "name": "angular2-skeleton-node",
   "version": "1.0.0",
-  "description": "A simple starter Angular2 / Node / Hapi project",
+  "description": "A starter Angular2 / Node / Hapi / React project",
   "keywords": [
+    "Angular",
     "Angular2",
+    "Hapi",
     "Node",
-    "Hapi"
+    "React",
+    "Webpack"
   ],
   "main": "src/server/server.js",
   "engines": {
     "node": "^6.0.0"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production     node --harmony src/server/server.js",
-    "startdev": "cross-env NODE_ENV=development     node --harmony src/server/server.js",
-    "build": "cross-env NODE_ENV=production     node --harmony src/build/make.js    && cross-env NODE_ENV=production   webpack -p --config src/config/webpack-config.js",
-    "webpack": "cross-env NODE_ENV=development  node --harmony src/build/make.js    && cross-env NODE_ENV=development  node --harmony src/client/webpack-dev-server.js",
-    "dev": "cross-env NODE_ENV=development      node --harmony src/build/make.js    && node ./node_modules/nodemon/bin/nodemon.js --harmony src/server/server.js",
-    "make": "cross-env NODE_ENV=development     node --harmony src/build/make.js",
-    "lint": "eslint . --ext .js --ext .jsx",
+    "start": "cross-env NODE_ENV=production       node --harmony src/server/server.js",
+    "startdev": "cross-env NODE_ENV=development   node --harmony src/server/server.js",
+    "build": "cross-env NODE_ENV=production       node --harmony src/build/make.js    && cross-env NODE_ENV=production   webpack -p --config src/config/webpack-config.js",
+    "webpack": "cross-env NODE_ENV=development    node --harmony src/build/make.js    && cross-env NODE_ENV=development  node --harmony src/client/webpack-dev-server.js",
+    "dev": "cross-env NODE_ENV=development        node --harmony src/build/make.js    && cross-env NODE_ENV=development  node ./node_modules/nodemon/bin/nodemon.js --harmony src/server/server.js",
+    "make": "cross-env NODE_ENV=development       node --harmony src/build/make.js",
     "postinstall": "npm run build",
     "test": "./node_modules/.bin/mocha --compilers jsx:babel-register --require ignore-styles ./tests/specs --recursive"
   },
@@ -35,14 +37,6 @@
     "cross-env": "^2.0.0",
     "css-loader": "^0.23.1",
     "express": "^4.14.0",
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-nodemon": "^2.1.0",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^1.5.4",
-    "gulp-util": "^3.0.7",
-    "gulp-webpack": "^1.5.0",
-    "hapi-webpack-dev-plugin": "^0.1.2",
     "nodemon": "^1.10.0",
     "raw-loader": "^0.5.1",
     "to-string-loader": "^1.1.4",
