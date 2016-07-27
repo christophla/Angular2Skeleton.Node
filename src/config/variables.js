@@ -3,27 +3,27 @@
 var path = require('path');
 var chalk = require('chalk');
 
-// This and anything in config.paths must be absolute.
+// this and anything in config.paths must be absolute.
 var ROOT_PATH = path.resolve(__dirname, '../..');
 
-var SOURCE_DIRNAME = 'src';
-var WEB_ROOT_DIRNAME = 'public';
+
 var ASSETS_DIRNAME = 'static';
 var BUILD_DIRNAME = 'static/build';
-
 var SERVER_HOST;
 var SERVER_PORT;
 var SERVER_PROTOCOL = 'http'; // Note: I did not test https yet, so you might need more adjustments to make it work
+var SOURCE_DIRNAME = 'src/server';
 var WEBPACK_DEV_SERVER_PORT = 3001;
+var WEB_ROOT_DIRNAME = 'public';
 
 // process.env object contains environment variables passed to the node.js process.
 // For example, you can see NODE_ENV passed to node in the "scripts" section of package.json
 if (process.env.NODE_ENV === 'development') {
-    SERVER_HOST = '0.0.0.0';
+    SERVER_HOST = '127.0.0.1';
     SERVER_PORT = process.env.PORT || 3000;
 
 } else if (process.env.NODE_ENV === 'production') {
-    SERVER_HOST = '0.0.0.0';
+    SERVER_HOST = '127.0.0.1';
     SERVER_PORT = process.env.PORT || 2000;
 
 } else {
@@ -43,8 +43,7 @@ var config = {
         assets: path.join(ROOT_PATH, WEB_ROOT_DIRNAME, ASSETS_DIRNAME),
         build: path.join(ROOT_PATH, WEB_ROOT_DIRNAME, BUILD_DIRNAME), // Do not keep any non-generated files here.
         source: path.join(ROOT_PATH, SOURCE_DIRNAME),
-        components: path.join(ROOT_PATH, SOURCE_DIRNAME, 'components'),
-        serverViews: path.join(ROOT_PATH, SOURCE_DIRNAME, 'server-views')
+        serverViews: path.join(ROOT_PATH, SOURCE_DIRNAME, 'views')
     },
     server: {
         publicFiles: [

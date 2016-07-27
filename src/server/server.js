@@ -1,16 +1,19 @@
-const Path = require('path');
+'use strict';
+
+// Perform babel transforms defined in .babelrc (ES6, JSX, etc.) on server-side code
+// Note: the options in .babelrc are also used for client-side code
+// because we use a babel loader in webpack config
+require('babel-register');
+
 const Hapi = require('hapi');
-const webpack = require('webpack');
-const webpackConfig = require('../config/webpack.config.js');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-const webpackMiddleware = require('webpack-dev-middleware');
-const isDeveloping = process.env.NODE_ENV !== 'production';
-const chokidar = require('chokidar');
+const HapiReactViews = require('hapi-react-views');
+const path = require('path');
 
 console.log(' ');
 console.log('*********************************************************');
 console.log('* Skeleton Application                                   *');
 console.log('*********************************************************');
+
 
 // exception handling
 process.on('uncaughtException', function (err) {
@@ -27,93 +30,117 @@ function endIfErr(err) {
 }
 
 // config
-var options = require('./options.js');
-
-// Do "hot-reloading" of express stuff on the server
-// Throw away cached modules and re-require next time
-// Ensure there's no important state in there!
-// const watcher = chokidar.watch('./src/server');
-
-// watcher.on('ready', function() {
-//   watcher.on('all', function() {
-//     console.log("Clearing /server/ module cache from server");
-//     Object.keys(require.cache).forEach(function(id) {
-//       if (/[\/\\]server[\/\\]/.test(id)) {
-//           delete require.cache[id];
-//         }
-//     });
-//   });
-// });
-
-// webpack config
-webpackConfig.devtool = 'source-map';
+var config = require('../config/variables');
 
 
 // hapi webserver
-const server = new Hapi.Server({
-    debug: {
-        request: ['error']
-    },
-    connections: {
-        routes: {
-            cors: options.main.cors,
-            files: {
-                relativeTo: Path.join(__dirname, options.main.public)
-            }
-        }
-    }
-});
+const server = new Hapi.Server();
 
 server.connection({
-    host: options.main.host,
-    labels: [options.main.labels.api],
-    port: options.main.port
+    host: config.server.host,
+    port: config.server.port
 });
 
-// register our server plugins
 
+// register our server plugins
 var plugins = [
     { register: require('bell') },
-    { register: require('inert') }
+    { register: require('inert') },
+    { register: require('vision') }
 ];
 
-// webpack development plugin
-if (isDeveloping) {
-    //create the webpack compiler
-    // var compiler = webpack(webpackConfig);
-    // plugins.push({
-    //     register: require('hapi-webpack-dev-plugin'),
-    //     options: {
-    //         compiler: compiler,
-    //         quiet: false,
-    //         devIndex: ".",
-    //         watchDelay: 200,
-    //         noInfo: false,
-    //         stats: {
-    //             colors: true
-    //         }
-    //     }
-    // });
+// enable proxying requests to webpack dev server (proxy handler)
+if (process.env.NODE_ENV === 'development') {
+    var H2o2 = require('h2o2');
+    plugins.push({ register: H2o2 });
 }
 
-server.register(plugins, { routes: { prefix: '/api' } }, function (err) {
+
+// register
+server.register(plugins, function (err) {
     endIfErr(err);
 
-    // client route
+    // setup server side react views using Vision
+    server.views({
+        engines: { jsx: HapiReactViews },
+        path: config.paths.serverViews
+    });
+
+
+    // serve all files from the assets directory
+    // note: in production this also serves webpack bundles
     server.route({
         method: 'GET',
-        path: '/{param*}',
+        path: config.publicPaths.assets + '{path*}',
         handler: {
             directory: {
-                path: '.',
-                redirectToSlash: true,
-                index: true
+                path: config.paths.assets,
+                index: false,
+                listing: false,
+                showHidden: false
             }
         }
     });
 
-    // Add the server routes
+
+    // serve white-listed files from the webRoot directory
+    config.server.publicFiles.forEach(
+        (filename) => {
+            server.route({
+                method: 'GET',
+                path: '/' + filename,
+                handler: {
+                    file: {
+                        path: path.join(config.paths.webRoot, filename)
+                    }
+                }
+            });
+        }
+    );
+
+    // catch-all
+    server.route({
+        method: 'GET',
+        path: '/{path*}',
+        handler: (request, reply) => {
+            reply('Hapi catch-all view for /' + encodeURIComponent(request.params.path));
+        }
+    });
+
+    // app
+    server.route({
+        method: 'GET',
+        path: '/',
+        handler: {
+            view: 'app' // app.jsx in /views
+        }
+    });
+
+    // add the server routes
     server.route(require('./routes'));
+
+    // DEV SETUP
+    if (process.env.NODE_ENV === 'development') {
+
+        // Proxy webpack assets requests to webpack-dev-server
+        // Note: in development webpack bundles are served from memory, not filesystem
+        server.route({
+            method: 'GET',
+            path: config.publicPaths.build + '{path*}', // this includes HMR patches, not just webpack bundle files
+            handler: {
+                proxy: {
+                    host: config.server.host,
+                    port: config.webpack.port,
+                    passThrough: true
+                }
+            }
+        });
+
+        // Note: We also make requests to Webpack Dev Server EventSource endpoint (typically /__webpack_hmr).
+        // We don't need to proxy these requests because we configured webpack-hot-middleware
+        // to request them directly from a webpack dev server URL in webpack-config.js
+
+    }
 
     server.start(function (err) {
         endIfErr(err);

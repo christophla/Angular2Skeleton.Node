@@ -17,7 +17,6 @@ var nodemonConfig = {
     delay: 200, // Debounce nodemon restarts. Note: nodemon restarting too often can screw with HMR.
     ignore: [
         '.sass-cache',
-        path.relative(config.paths.root, config.paths.components) + '/*', // ignore frontend files to minimize server restarts
         path.relative(config.paths.root, config.paths.webRoot) + '/*' // ignore compiled bundles & static frontend files
     ]
 };

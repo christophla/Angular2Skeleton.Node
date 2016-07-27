@@ -1,16 +1,17 @@
 const webpack = require('webpack');
 const path = require('path');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+//const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const config = require('./variables');
 
-const APP_ENTRY = path.join(config.paths.source, 'main-app');
+//const APP_ENTRY = path.join(config.paths.source, 'main-app');
 const WEBPACK_HOT_ENTRY = 'webpack-hot-middleware/client?path=' + config.webpack.devServerUrl + '/__webpack_hmr';
 const JS_JSX = /\.(js|jsx)$/;
 
 
 // Webpack Config
 var webpackConfig = {
+
     entry: {
         'polyfills': ['./src/client/polyfills.browser.ts', WEBPACK_HOT_ENTRY],
         'vendor': ['./src/client/vendor.browser.ts', WEBPACK_HOT_ENTRY],
