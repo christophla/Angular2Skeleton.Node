@@ -1,7 +1,7 @@
 ﻿
 import {IOSConfigurationProvider} from './config/index';
 import {IPrincipalProvider} from './security/principal';
-import {IScrollConfigProvider} from './directives/os-scroll/directive';
+import {IScrollConfigProvider} from './directives/os-scroll';
 
 /**
  * Configures the core module
@@ -22,15 +22,8 @@ export class Config {
         $provide: ng.auto.IProvideService,
         osConfigProvider: IOSConfigurationProvider,
         osPrincipalProvider: IPrincipalProvider,
-        osScrollConfigProvider: IScrollConfigProvider,
-        cacheFactoryProvider: any
+        osScrollConfigProvider: IScrollConfigProvider
     ) {
-
-        // cache configuration
-        angular.extend(cacheFactoryProvider.defaults, {
-            maxAge: 15 * 60 * 1000,
-            storageMode: 'localStorage'
-        });
 
         // ng-aria configuration
         $ariaProvider.config({

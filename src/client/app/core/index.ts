@@ -1,4 +1,9 @@
 ﻿import 'angular';
+import 'angular-cache';
+import 'angular-aria';
+import 'angular-ui-router';
+import 'angular-translate';
+import 'angular-translate-loader-partial';
 
 import {AppPalettes} from './theming/palettes';
 import {AppThemes} from './theming/themes';
@@ -70,36 +75,36 @@ import {WidgetBackDirective} from './directives/os-widget';
 angular
     .module('os.core',
     [
-        '$ariaProvider',
-        '$logProvider',
-        '$translateProvider',
-        '$provide',
-        'osConfigProvider',
-        'osPrincipalProvider',
-        'osScrollConfigProvider',
-        'CacheFactoryProvider',
+        // '$ariaProvider',
+        // '$logProvider',
+        // '$translateProvider',
+        // '$provide',
+        // 'osConfigProvider',
+        // 'osPrincipalProvider',
+        // 'osScrollConfigProvider',
+        // 'CacheFactoryProvider',
         'angular-cache',
         'as.sortable',
-        'chart.js',
-        'LocalStorageModule',
-        'mdPickers',
+        // 'chart.js',
+        // 'LocalStorageModule',
+        // 'mdPickers',
         'ngAnimate',
         'ngAria',
         'ngCookies',
         'ngMaterial',
-        'ngMaterialDatePicker',
+        // 'ngMaterialDatePicker',
         'ngMessages',
         'ngSanitize',
-        'nvd3',
+        // 'nvd3',
         'pascalprecht.translate',
         'restangular',
-        'tc.chartjs',
-        'textAngular',
+        // 'tc.chartjs',
+        // 'textAngular',
         'timer',
         'ui.router',
         'ui.sortable',
-        'xeditable',
-        'youtube-embed'
+        // 'xeditable',
+        // 'youtube-embed'
     ])
 
     .factory('underscore', ['$window', $window => $window._])

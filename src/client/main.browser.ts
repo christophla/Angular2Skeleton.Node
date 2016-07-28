@@ -15,7 +15,7 @@ angular
   .module('app', [
 
     // Core
-    //'os.core',
+    'os.core',
 
     // // Data
     // 'app.data',
