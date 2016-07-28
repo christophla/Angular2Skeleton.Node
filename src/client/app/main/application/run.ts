@@ -1,5 +1,8 @@
 ﻿import 'angular';
 
+import {IAuthorizationService} from '../../core/security';
+import {IPrincipal} from '../../core/security';
+
 /**
  * Runs the application
  *
@@ -16,8 +19,8 @@ export class RunBlock {
         $rootScope: any,
         $timeout: ng.ITimeoutService,
         $state: ng.ui.IStateProvider,
-        osAuthorizationService: Core.IAuthorizationService,
-        osPrincipal: Core.IPrincipal
+        osAuthorizationService: IAuthorizationService,
+        osPrincipal: IPrincipal
     ) {
 
         console.log('Loading index run block...');

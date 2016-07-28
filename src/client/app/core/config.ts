@@ -1,5 +1,7 @@
 ﻿
 import {IOSConfigurationProvider} from './config/index';
+import {IPrincipalProvider} from './security/principal';
+import {IScrollConfigProvider} from './directives/os-scroll/directive';
 
 /**
  * Configures the core module

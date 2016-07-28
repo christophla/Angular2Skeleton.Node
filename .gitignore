@@ -47,3 +47,4 @@ webpack-assets.json
 typings
 
 # Note: Webpack output directory is ignored using a gitignore file located in it.
+
