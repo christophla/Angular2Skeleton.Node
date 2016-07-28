@@ -21,7 +21,7 @@
     "start": "cross-env NODE_ENV=production       node --harmony src/server/server.js",
     "webpack": "cross-env NODE_ENV=development    node --harmony src/build/make.js    && cross-env NODE_ENV=development  node --harmony src/client/webpack-dev-server.js",
     "test": "./node_modules/.bin/mocha --compilers jsx:babel-register --require ignore-styles ./tests/specs --recursive",
-    "postinstall": "npm run build && typings install"
+    "postinstall": "typings install && npm run build"
   },
   "contributors": [
     "Christopher Town <christopher@christophertown.com>"
