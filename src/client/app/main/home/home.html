@@ -1,0 +1,65 @@
+<div id="simple-table" class="page-layout simple fullwidth doc-page element-doc-page">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="center start">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">Home</span>
+            </div>
+            <div class="title">Home</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <div class="simple-table-container md-whiteframe-4dp">
+            <div class="table-title">
+                {{vm.data.name}}
+            </div>
+
+            <ms-widget flippable="false" layout="column">
+                <ms-widget-front class="p-16 white-bg">
+
+                    <div class="pb-16" layout="row" layout-align="space-between center">
+                        <!-- <nvd3 class="h-320" class="remove-x-lines" options="vm.options" data="vm.data"></nvd3> -->
+                    </div>
+                </ms-widget-front>
+            </ms-widget>
+            <!--
+            <table class="simple" ms-responsive-table>
+                <thead>
+                    <tr>
+                        <th>Hour</th>
+                        <th>Half Hour</th>
+                        <th>Quarter Hour</th>
+                        <th class="text-right">Sum</th>
+                    </tr>
+                </thead>
+
+                <tfoot>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </tfoot>
+
+                <tbody>
+                    <tr ng-repeat="person in vm.employees">
+                        <td class="name">{{person.name}}</td>
+                        <td class="position">{{person.position}}</td>
+                        <td class="office">{{person.office}}</td>
+                        <td class="age text-right">{{person.age}}</td>
+                        <td class="start-date text-right">{{person.startDate}}</td>
+                        <td class="salary text-right">{{person.salary | currency}}</td>
+                    </tr>
+                </tbody>
+            </table> -->
+        </div>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

@@ -1,0 +1,152 @@
+<!-- SIDENAV HEADER ROOT -->
+<md-toolbar class="md-accent" ng-class="'md-'+vm.board.color+'-bg'">
+    <div class="md-toolbar-tools">
+        <span flex class="menu-title">Active Filters</span>
+    </div>
+</md-toolbar>
+<!-- / SIDENAV HEADER ROOT -->
+
+<style>
+    .md-datepicker-button {
+        width: 36px;
+        display: none;
+    }
+
+    .md-datepicker-input-container {
+        margin-left: 2px;
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .md-datepicker-input-container {
+        display: block;
+    }
+
+    .md-datepicker-input[placeholder] {
+        color=red;
+    }
+
+    .md-errors-spacer {
+        min-height: 0 !important;
+    }
+    /*.padding-top-0 {
+        padding-top: 0px;
+    }
+
+    .padding-bottom-0 {
+        padding-bottom: 0px;
+    }*/
+</style>
+
+<!-- FILTERS -->
+<md-content class="animate-slide-right datasources" ms-scroll ms-sidenav-helper>
+
+    <div class="form-wrapper md-whiteframe-1dp" flex="100">
+
+        <div layout="column">
+
+            <!-- START DATE -->
+
+            <md-input-container flex>
+                <label>Start Date</label>
+                <input time="false" date="true" mdc-datetime-picker="" type="text" id="date" placeholder="Date" ng-model="vm.startDate" min-date="minDate" max-date="maxDate" class=" md-input">
+            </md-input-container>
+
+            <!-- END DATE -->
+
+            <md-input-container flex>
+                <label>Start Date</label>
+                <input time="false" date="true" mdc-datetime-picker="" type="text" id="date" placeholder="Date" ng-model="vm.endDate" min-date="minDate" max-date="maxDate" class=" md-input">
+            </md-input-container>
+
+            <!-- START TIME -->
+
+            <md-input-container flex>
+                <label>Start Time</label>
+                <input mdc-datetime-picker="" date="false" time="true" type="text" id="time" short-time="true" placeholder="Time" min-date="minDate" format="hh:mm a" ng-model="vm.startTime" class=" md-input">
+            </md-input-container>
+
+            <!-- END TIME -->
+
+            <md-input-container flex>
+                <label>End Time</label>
+                <input mdc-datetime-picker="" date="false" time="true" type="text" id="time" short-time="true" placeholder="Time" min-date="minDate" format="hh:mm a" ng-model="vm.endTime" class=" md-input">
+            </md-input-container>
+
+            <!-- BEHAVIORS -->
+
+            <md-input-container flex>
+                <label>Behaviors</label>
+                <md-select ng-model="input.selected" ng-change="vm.change(input)" multiple>
+                    <md-option ng-repeat="behavior in vm.behaviors" value="{{behavior.behavior_key}}">
+                        {{behavior.behaviorlocalcodevalue}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+
+            <!-- DISCIPLINE -->
+
+            <md-input-container flex>
+                <label>Discipline</label>
+                <md-select ng-model="input.selected" ng-change="vm.change(input)" multiple>
+                    <md-option ng-repeat="discipline in vm.disciplines" value="{{discipline.discipline_key}}">
+                        {{discipline.disciplinelocalcodevalue}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+
+            <!-- GRADE LEVEL -->
+
+            <md-input-container flex>
+                <label>Grade Level</label>
+                <md-select ng-model="input.selected" ng-change="vm.change(input)" multiple>
+                    <md-option ng-repeat="gradelevel in vm.gradelevels" value="{{gradelevel.gradelevel_key}}">
+                        {{gradelevel.gradelevelname}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+
+            <!-- LOCATIONS -->
+
+            <md-input-container flex>
+                <label>Locations</label>
+                <md-select ng-model="input.selected" ng-change="vm.change(input)" multiple>
+                    <md-option ng-repeat="location in vm.locations" value="{{location.disciplineincidentlocation_key}}">
+                        {{location.locationedficodevalue}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+
+            <!-- SECTION 504 -->
+            <md-switch ng-model="vm.section504">
+                Section 504 Participation
+            </md-switch>
+
+            <!-- gifted -->
+            <md-switch ng-model="vm.gifted">
+                Gifted
+            </md-switch>
+
+            <!-- CPECIAL ED -->
+            <md-switch ng-model="vm.speced">
+                Special Education
+            </md-switch>
+
+            <!-- TITLE I -->
+            <md-switch ng-model="vm.titlei">
+                Title I
+            </md-switch>
+
+
+        </div>
+
+        <!--<div layout="column" ng-if="!vm.dataset.inputs.length">
+            There are no filters
+        </div>-->
+
+        <!-- <md-button type="submit" class="md-raised md-accent" aria-label="Submit" ng-disabled="basicForm.$invalid || basicForm.$pristine">
+            Update
+        </md-button> -->
+    </div>
+</md-content>
+<!-- / FILTERS -->

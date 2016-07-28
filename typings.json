@@ -1,9 +1,27 @@
 {
-  "name": "angular2-seed",
-  "version": false,
-  "dependencies": {},
+  "dependencies": {
+    "debug": "registry:npm/debug#2.0.0+20160211003958"
+  },
   "globalDependencies": {
-    "core-js": "registry:dt/core-js#0.0.0+20160602141332",
-    "node": "registry:dt/node#6.0.0+20160621231320"
+    "angular": "registry:dt/angular#1.5.0+20160613151008",
+    "angular-animate": "registry:dt/angular-animate#1.5.0+20160407085121",
+    "angular-cookies": "registry:dt/angular-cookies#1.4.0+20160317120654",
+    "angular-local-storage": "registry:dt/angular-local-storage#0.1.5+20160602154142",
+    "angular-material": "registry:dt/angular-material#1.0.0-rc5.0+20160602130258",
+    "angular-resource": "registry:dt/angular-resource#1.5.0+20160613142217",
+    "angular-translate": "registry:dt/angular-translate#2.4.0+20160505162438",
+    "angular-ui-router": "registry:dt/angular-ui-router#1.1.5+20160521151413",
+    "angular-ui-sortable": "registry:dt/angular-ui-sortable#0.13.0+20160317120654",
+    "d3": "registry:dt/d3#0.0.0+20160628065019",
+    "es6-promise": "registry:dt/es6-promise#0.0.0+20160613155421",
+    "jquery": "registry:dt/jquery#1.10.0+20160417213236",
+    "mobile-detect": "registry:dt/mobile-detect#1.2.0+20160316155526",
+    "moment": "registry:dt/moment#2.8.0+20160316155526",
+    "moment-node": "registry:dt/moment-node#2.11.1+20160511043338",
+    "node": "registry:dt/node#6.0.0+20160621231320",
+    "nvd3": "registry:dt/nvd3#1.8.1+20160317120654",
+    "restangular": "registry:dt/restangular#1.5.0+20160514142658",
+    "toastr": "registry:dt/toastr#2.1.1+20160510010435",
+    "underscore": "registry:dt/underscore#1.7.0+20160505190121"
   }
 }

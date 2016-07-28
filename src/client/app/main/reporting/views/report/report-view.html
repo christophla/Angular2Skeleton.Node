@@ -1,0 +1,36 @@
+<!-- REPORT -->
+
+<div id="board" style="width:100%">
+
+    <div id="widgets" class="widget-group" flex="100" layout-wrap>
+
+        <os-widget ng-repeat="item in vm.items" flippable="true" layout="column" style="height:100%;" flex="100">
+
+            <os-widget-front class="white-bg">
+
+                <!-- TITLE -->
+
+                <div class="p-24 border-bottom" layout="row" layout-align="space-between center">
+                    <div class="h3">{{item.title}}</div>
+                </div>
+
+                <!-- CHART -->
+
+                <div class="p-24">
+
+                    <!-- BAR -->
+                    <canvas class="chart chart-bar" chart-data="item.result.values" chart-labels="item.result.labels" chart-series="item.result.series"
+                        chart-colors="item.colors" chart-options="item.options" ng-if="item.type =='chart-bar'" chart-dataset-override="vm.datasetOverride"> </canvas>
+                    <!-- HORIZONTAL BAR -->
+                    <canvas class="chart chart-horizontal-bar" chart-data="item.result.values" chart-labels="item.result.labels" chart-series="item.result.series"
+                        chart-colors="item.colors" chart-options="item.options" ng-if="item.type =='chart-horizontal-bar'" chart-dataset-override="vm.datasetOverride"> </canvas>
+                </div>
+
+            </os-widget-front>
+
+        </os-widget>
+
+    </div>
+
+</div>
+<!-- / REPORT -->

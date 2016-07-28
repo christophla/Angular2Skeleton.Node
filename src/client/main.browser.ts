@@ -1,17 +1,36 @@
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';
-import {bootstrap} from '@angular/platform-browser-dynamic';
-import {HTTP_PROVIDERS} from '@angular/http';
-import {enableProdMode} from '@angular/core';
+//import './core';
+import 'angular';
 
-import {APP_ROUTER_PROVIDERS} from './app/app.routes';
-import {App} from './app/app';
+// load our default (non specific) css
+// import 'font-awesome/css/font-awesome.css';
+// import 'bootstrap/dist/css/bootstrap.css';
+// import './styles/screen.scss';
 
-console.log(process.env.NODE_ENV)
-// enableProdMode()
+/**
+ * Module Registration
+ */
+angular
+  .module('app', [
 
-bootstrap(App, [
-  HTTP_PROVIDERS,
-  APP_ROUTER_PROVIDERS,
-  { provide: LocationStrategy, useClass: HashLocationStrategy }
-])
-.catch(err => console.error(err));
+    // Core
+    'os.core',
+
+    // Data
+    'app.data',
+
+    // Index
+    'app.application',
+
+    // Toolbar
+    'app.toolbar',
+
+    // Navigation
+    'app.navigation',
+
+    // Main
+    'app.reporting'
+  ]);
+
+angular.bootstrap(document, ['app'], {
+  strictDi: false
+});
