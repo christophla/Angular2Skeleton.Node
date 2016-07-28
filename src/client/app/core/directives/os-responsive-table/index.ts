@@ -1,10 +1,15 @@
-import 'angular';
-
-import {ResponsiveTableDirective} from './directive';
 
 /**
- * Module Registration
+ * Reponsive Table Directive
  */
-angular
-    .module('os.core')
-    .directive('osResponsiveTable', () => new ResponsiveTableDirective());
+export class ResponsiveTableDirective implements ng.IDirective {
+    public restrict = 'A';
+
+    public link(scope: ng.IScope, instanceElement: ng.IAugmentedJQuery) {
+
+        // Wrap the table
+        var wrapper = angular.element('<div class="os-responsive-table-wrapper"></div>');
+        instanceElement.after(wrapper);
+        wrapper.append(instanceElement);
+    }
+}

@@ -1,10 +1,24 @@
-﻿import 'angular';
+﻿/**
+ * Random Class Directive Scope
+ */
+export interface IRandomClassDirectiveScope extends ng.IScope {
+    osRandomClass: string;
+}
 
-import {RandomClassDirective} from './directive';
 
 /**
- * Module Registration
+ * Random Class Directive
  */
-angular
-    .module('os.core')
-    .directive('osRandomClass', () => new RandomClassDirective());
+export class RandomClassDirective implements ng.IDirective {
+
+    public restrict = 'A';
+    public scope = {
+        osRandomClass: '='
+    };
+
+    public link = (scope: IRandomClassDirectiveScope, instanceElement: ng.IAugmentedJQuery) => {
+        var randomClass = scope.osRandomClass[Math.floor(Math.random() * (scope.osRandomClass.length))];
+        instanceElement.addClass(randomClass);
+
+    }
+}

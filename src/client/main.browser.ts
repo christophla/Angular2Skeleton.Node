@@ -1,5 +1,7 @@
-//import './core';
 import 'angular';
+
+import './app/core/index';
+
 
 // load our default (non specific) css
 // import 'font-awesome/css/font-awesome.css';
@@ -13,22 +15,22 @@ angular
   .module('app', [
 
     // Core
-    'os.core',
+    //'os.core',
 
-    // Data
-    'app.data',
+    // // Data
+    // 'app.data',
 
-    // Index
-    'app.application',
+    // // Index
+    // 'app.application',
 
-    // Toolbar
-    'app.toolbar',
+    // // Toolbar
+    // 'app.toolbar',
 
-    // Navigation
-    'app.navigation',
+    // // Navigation
+    // 'app.navigation',
 
-    // Main
-    'app.reporting'
+    // // Main
+    // 'app.reporting'
   ]);
 
 angular.bootstrap(document, ['app'], {

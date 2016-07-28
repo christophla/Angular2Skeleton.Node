@@ -11,6 +11,8 @@ export class RunBlock {
         appThemeGenerator,
         osConfig: IOSConfiguration) {
 
+        console.log('loading app core...');
+
         /**
          * Generate extra classes based on registered themes so we
          * can use same colors with non-angular-material elements
