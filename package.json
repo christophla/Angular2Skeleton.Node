@@ -15,14 +15,13 @@
     "node": "^6.0.0"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production       node --harmony src/server/server.js",
-    "startdev": "cross-env NODE_ENV=development   node --harmony src/server/server.js",
     "build": "cross-env NODE_ENV=production       node --harmony src/build/make.js    && cross-env NODE_ENV=production   webpack -p --config src/config/webpack-config.js",
-    "webpack": "cross-env NODE_ENV=development    node --harmony src/build/make.js    && cross-env NODE_ENV=development  node --harmony src/client/webpack-dev-server.js",
     "dev": "cross-env NODE_ENV=development        node --harmony src/build/make.js    && cross-env NODE_ENV=development  node ./node_modules/nodemon/bin/nodemon.js --harmony src/server/server.js",
     "make": "cross-env NODE_ENV=development       node --harmony src/build/make.js",
-    "postinstall": "npm run build",
-    "test": "./node_modules/.bin/mocha --compilers jsx:babel-register --require ignore-styles ./tests/specs --recursive"
+    "start": "cross-env NODE_ENV=production       node --harmony src/server/server.js",
+    "webpack": "cross-env NODE_ENV=development    node --harmony src/build/make.js    && cross-env NODE_ENV=development  node --harmony src/client/webpack-dev-server.js",
+    "test": "./node_modules/.bin/mocha --compilers jsx:babel-register --require ignore-styles ./tests/specs --recursive",
+    "postinstall": "npm run build && typings install"
   },
   "contributors": [
     "Christopher Town <christopher@christophertown.com>"
