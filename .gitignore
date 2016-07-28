@@ -43,4 +43,7 @@ webpack-assets.json
 # Visual Studio Code
 .vscode
 
+# Typings
+typings
+
 # Note: Webpack output directory is ignored using a gitignore file located in it.
