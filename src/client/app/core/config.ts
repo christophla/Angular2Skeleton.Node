@@ -2,6 +2,7 @@
 import {IOSConfigurationProvider} from './config/index';
 import {IPrincipalProvider} from './security/principal';
 import {IScrollConfigProvider} from './directives/os-scroll';
+import 'toastr';
 
 /**
  * Configures the core module
@@ -48,10 +49,10 @@ export class Config {
         });
 
         // toastr configuration
-        toastr.options.timeOut = 3000;
-        toastr.options.positionClass = 'toast-bottom-right';
-        toastr.options.preventDuplicates = true;
-        toastr.options.progressBar = true;
+        // toastr.options.timeOut = 3000;
+        // toastr.options.positionClass = 'toast-bottom-right';
+        // toastr.options.preventDuplicates = true;
+        // toastr.options.progressBar = true;
 
         // angular-translate configuration
         $translateProvider.useLoader('$translatePartialLoader', {
