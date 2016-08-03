@@ -38,11 +38,11 @@ export class RunBlock {
         /**
          * Put browser information to the html as a class
          */
-        var browserInfo = osUtils.detectBrowser();
-        if (browserInfo) {
-            var htmlClass = browserInfo.browser + ' ' + browserInfo.version + ' ' + browserInfo.os;
-            angular.element('html').addClass(htmlClass);
-        }
+        // var browserInfo = osUtils.detectBrowser();
+        // if (browserInfo) {
+        //     var htmlClass = browserInfo.browser + ' ' + browserInfo.version + ' ' + browserInfo.os;
+        //     angular.element('html').addClass(htmlClass);
+        // }
     }
 }
 

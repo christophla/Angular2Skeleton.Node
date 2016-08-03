@@ -1,4 +1,5 @@
 ﻿
+import 'mobile-detect';
 
 /**
  * Application utilities
@@ -37,7 +38,7 @@ export class Utils implements IUtils {
      */
     constructor(private $window: ng.IWindowService) {
 
-        this.mobileDetect = new MobileDetect($window.navigator.userAgent);
+        // this.mobileDetect = new MobileDetect($window.navigator.userAgent); // need to figure out how to integrate with webpack
     }
 
     /**

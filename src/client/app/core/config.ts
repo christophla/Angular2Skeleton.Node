@@ -48,10 +48,10 @@ export class Config {
         });
 
         // toastr configuration
-        toastr.options.timeOut = 3000;
-        toastr.options.positionClass = 'toast-bottom-right';
-        toastr.options.preventDuplicates = true;
-        toastr.options.progressBar = true;
+        // toastr.options.timeOut = 3000;
+        // toastr.options.positionClass = 'toast-bottom-right';
+        // toastr.options.preventDuplicates = true;
+        // toastr.options.progressBar = true;
 
         // angular-translate configuration
         $translateProvider.useLoader('$translatePartialLoader', {
@@ -61,41 +61,41 @@ export class Config {
         $translateProvider.useSanitizeValueStrategy('sanitize');
 
         // Text Angular options
-        $provide.decorator('taOptions', [
-            '$delegate', taOptions => {
-                taOptions.toolbar = [
-                    ['bold', 'italics', 'underline', 'ul', 'ol', 'quote']
-                ];
+        // $provide.decorator('taOptions', [
+        //     '$delegate', taOptions => {
+        //         taOptions.toolbar = [
+        //             ['bold', 'italics', 'underline', 'ul', 'ol', 'quote']
+        //         ];
 
-                taOptions.classes = {
-                    disabled: '',
-                    focussed: 'focussed',
-                    htmlEditor: 'form-control',
-                    textEditor: 'form-control',
-                    toolbar: 'ta-toolbar',
-                    toolbarButton: 'md-button',
-                    toolbarButtonActive: 'active',
-                    toolbarGroup: 'ta-group'
-                };
+        //         taOptions.classes = {
+        //             disabled: '',
+        //             focussed: 'focussed',
+        //             htmlEditor: 'form-control',
+        //             textEditor: 'form-control',
+        //             toolbar: 'ta-toolbar',
+        //             toolbarButton: 'md-button',
+        //             toolbarButtonActive: 'active',
+        //             toolbarGroup: 'ta-group'
+        //         };
 
-                return taOptions;
-            }
-        ]);
+        //         return taOptions;
+        //     }
+        // ]);
 
         // Text Angular tools
-        $provide.decorator('taTools', [
-            '$delegate', taTools => {
+        // $provide.decorator('taTools', [
+        //     '$delegate', taTools => {
 
-                taTools.bold.iconclass = 'icon-format-bold';
-                taTools.italics.iconclass = 'icon-format-italic';
-                taTools.underline.iconclass = 'icon-format-underline';
-                taTools.ul.iconclass = 'icon-format-list-bulleted';
-                taTools.ol.iconclass = 'icon-format-list-numbers';
-                taTools.quote.iconclass = 'icon-format-quote';
+        //         taTools.bold.iconclass = 'icon-format-bold';
+        //         taTools.italics.iconclass = 'icon-format-italic';
+        //         taTools.underline.iconclass = 'icon-format-underline';
+        //         taTools.ul.iconclass = 'icon-format-list-bulleted';
+        //         taTools.ol.iconclass = 'icon-format-list-numbers';
+        //         taTools.quote.iconclass = 'icon-format-quote';
 
-                return taTools;
-            }
-        ]);
+        //         return taTools;
+        //     }
+        // ]);
 
         // App configurations
         osConfigProvider.config({

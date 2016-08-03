@@ -1,9 +1,4 @@
 ﻿import 'angular';
-import 'angular-cache';
-import 'angular-aria';
-import 'angular-ui-router';
-import 'angular-translate';
-import 'angular-translate-loader-partial';
 
 import {AppPalettes} from './theming/palettes';
 import {AppThemes} from './theming/themes';
@@ -30,12 +25,12 @@ import {Config} from './config';
 import {CoreService} from './service';
 import {RunBlock} from './run';
 
-import {CardDirective} from './directives/os-card';
+// directives
 
+import {CardDirective} from './directives/os-card';
 import {FormWizardController} from './directives/os-form-wizard';
 import {FormWizardDirective} from './directives/os-form-wizard';
 import {FormWizardFormDirective} from './directives/os-form-wizard';
-
 import {NavigationController} from './directives/os-navigation/controller';
 import {NavigationDirective} from './directives/os-navigation/vertical';
 import {NavigationHorizontalDirective} from './directives/os-navigation/horizontal';
@@ -46,24 +41,16 @@ import {NavigationItemDirective} from './directives/os-navigation/vertical';
 import {NavigationNodeController} from './directives/os-navigation/vertical';
 import {NavigationNodeDirective} from './directives/os-navigation/vertical';
 import {NavigationServiceProvider} from './directives/os-navigation/service';
-
 import {RandomClassDirective} from './directives/os-random-class';
-
 import {ResponsiveTableDirective} from './directives/os-responsive-table';
-
 import {ScrollConfigProvider} from './directives/os-scroll';
 import {ScrollDirective} from './directives/os-scroll';
-
 import {SearchBarDirective} from './directives/os-search-bar';
-
 import {SidenavHelperDirective} from './directives/os-sidenav-helper';
-
 import {SplashScreenDirective} from './directives/os-splash-screen';
-
 import {OsTimelineController} from './directives/os-timeline';
 import {osTimelineDirective} from './directives/os-timeline';
 import {osTimelineItemDirective} from './directives/os-timeline';
-
 import {WidgetController} from './directives/os-widget';
 import {WidgetDirective} from './directives/os-widget';
 import {WidgetFrontDirective} from './directives/os-widget';

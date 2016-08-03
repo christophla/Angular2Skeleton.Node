@@ -14,11 +14,14 @@ import 'angular-translate-loader-partial';
 import 'angular-ui-router';
 import 'angular-ui-sortable';
 import 'angular-material';
+import 'jquery';
 import 'lodash';
+import 'mobile-detect';
 import 'moment';
 import 'restangular';
 import 'ng-sortable';
 import 'chart.js';
+import 'textangular';
 import 'toastr';
 
 

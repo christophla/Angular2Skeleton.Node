@@ -51,6 +51,9 @@ var webpackConfig = {
                 'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
             }
         }),
+        new webpack.ProvidePlugin({
+            "window.jQuery": "jquery"
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         //new SlowWebpackPlugin({delay: 2000}),
