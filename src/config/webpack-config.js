@@ -23,7 +23,7 @@ var webpackConfig = {
             // .ts files for TypeScript
             {
                 test: /\.ts$/,
-                loaders: ['awesome-typescript-loader', 'angular2-template-loader']
+                loaders: ['awesome-typescript-loader'] //, 'angular2-template-loader']
             }, {
                 test: /\.css$/,
                 loaders: ['to-string-loader', 'css-loader']

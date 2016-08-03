@@ -5,8 +5,8 @@
  * debugging slow compilation.
  */
 
-var chalk = require('chalk');
-var logPrefix = '[WebpackSlowPlugin]: ';
+const chalk = require('chalk');
+const logPrefix = '[WebpackSlowPlugin]: ';
 
 
 function WebpackProfilerPlugin(options) {
@@ -19,14 +19,18 @@ function WebpackProfilerPlugin(options) {
 
 
 WebpackProfilerPlugin.prototype.apply = function (compiler) {
+
     var delay = this.options.delay;
 
     compiler.plugin('done', () => {
+
         var beginTime = Date.now();
         var curTime = beginTime;
         var secondsElapsed = 0;
+
         console.log('');
         console.log(chalk.yellow(logPrefix + 'Begin'));
+
         while (curTime - beginTime < delay) {
             curTime = Date.now();
             if (Math.floor((curTime - beginTime) / 1000) > secondsElapsed) {
@@ -34,6 +38,7 @@ WebpackProfilerPlugin.prototype.apply = function (compiler) {
                 console.log(chalk.yellow(logPrefix + secondsElapsed + '/' + Math.ceil(delay / 1000)));
             }
         }
+
         console.log(chalk.yellow(logPrefix + 'End'));
         console.log('');
     });

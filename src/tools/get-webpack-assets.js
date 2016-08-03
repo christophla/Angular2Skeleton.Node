@@ -4,10 +4,10 @@
  * Gathers the web assets from build generated webpack-assets.json
  */
 
-var config = require('./../config/variables');
-var path = require('path');
+const config = require('./../config/variables');
+const path = require('path');
 
-var assetsJsonPath = path.resolve(config.webpack.assetsPath, config.webpack.assetsFilename);
+const assetsJsonPath = path.resolve(config.webpack.assetsPath, config.webpack.assetsFilename);
 
 /**
  * @type {function}

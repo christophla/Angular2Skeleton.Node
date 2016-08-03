@@ -89,7 +89,7 @@ angular
         // 'tc.chartjs',
         'textAngular',
         'timer',
-        'toastr',
+        // 'toastr',
         'ui.router',
         'ui.sortable',
         // 'xeditable',
