@@ -2,6 +2,7 @@
 import {IOSConfigurationProvider} from './config/index';
 import {IPrincipalProvider} from './security/principal';
 import {IScrollConfigProvider} from './directives/os-scroll';
+import 'toastr';
 
 /**
  * Configures the core module

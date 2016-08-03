@@ -23,6 +23,7 @@ import 'ng-sortable';
 import 'chart.js';
 import 'textangular';
 import 'toastr';
+import 'textangular';
 
 
 // For vendors for example jQuery, Lodash, angular2-jwt import them here

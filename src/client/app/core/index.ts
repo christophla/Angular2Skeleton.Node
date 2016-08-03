@@ -1,5 +1,6 @@
 ﻿import 'angular';
 
+
 import {AppPalettes} from './theming/palettes';
 import {AppThemes} from './theming/themes';
 import {AppThemeGeneratorService} from './theming/generator';
@@ -86,8 +87,9 @@ angular
         'pascalprecht.translate',
         'restangular',
         // 'tc.chartjs',
-        // 'textAngular',
+        'textAngular',
         'timer',
+        'toastr',
         'ui.router',
         'ui.sortable',
         // 'xeditable',
